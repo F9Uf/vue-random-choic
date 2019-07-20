@@ -44,23 +44,14 @@
         </div> -->
 
         <div v-for="(item, i) in list" :key="i" class="alert alert-dark alert-dismissible fade show list">
-          <div v-if="i === selectedIndex">
-            <input type="text"
-              class="list-input"
-              v-model="item.text"
-              v-focus
-              @blur="unSelectedx()"
-              @keypress.enter="unSelected()"
-            >
-          </div>
-          <div v-else>
-            <div @click="selectedList(i)">
-              {{ item.text }}
-            </div>
-            <button type="button" class="close" @click="deleteList(i)">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+          <input 
+            v-model="item.text" 
+            class="list-input"
+            v-autowidth="{maxWidth: '60vw', minWidth: '20px', comfortZone: 0}"
+          >
+          <button type="button" class="close" @click="deleteList(i)">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
       </div>
     </div>
