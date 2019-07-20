@@ -1,9 +1,25 @@
 <template>
   <div id="app" class="container">
     <!-- header box -->
-    <div class="row sticky-top my-3" >
+    <div class="row sticky-top py-3 align-items-end">
       <div class="col-auto mx-auto">
         <h1 class="display-5"><a href="/">สุ่มสิจ๊ะ</a></h1>
+      </div>
+    </div>
+    <!-- nav bar -->
+    <div class="row fixed-top py-4">
+      <div class="col-auto py-2 ml-auto mr-5">
+        <div class="custom-control custom-switch">
+          <input type="checkbox"
+            class="custom-control-input" 
+            id="toggle" 
+            v-model="isDarkMode"
+            true-value="night"
+            false-value="morning"
+            @change="toggleTheme($event)"
+          >
+          <label for="toggle" class="custom-control-label"></label>
+        </div>
       </div>
     </div>
     <!-- random list box -->
@@ -33,7 +49,6 @@
         <form @submit.prevent="addNewList()">
           <input type="text" v-model="newList">
         </form>
-        {{ selectedIndex }}
       </div>
     </div>
     <div class="row">
@@ -66,6 +81,7 @@ export default {
       newList: '',
       selectedIndex: null,
       randomResult: {},
+      isDarkMode: document.body.className,
     }
   },
   methods: {
@@ -100,6 +116,11 @@ export default {
         const randomIndex = Math.floor(Math.random() * this.list.length);
         this.randomResult = this.list[randomIndex];
       }
+    },
+
+    toggleTheme(e) {
+      document.body.className = e.target.checked ? 'night': 'morning';
+      this.isDarkMode = e.target.checked ? 'night': 'morning';
     }
   },
 

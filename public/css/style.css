@@ -1,5 +1,14 @@
 body {
-    background-color: rgb(17, 17, 22);
     font-family: 'Prompt', sans-serif;
+}
+body.night {
+    background-color: rgb(17, 17, 22);
     color: white;
+    transition: .3s all;
+}
+
+body.morning {
+    background-color: rgb(252, 247, 247); 
+    color: rgb(17, 17, 22);
+    transition: .3s all;
 }
