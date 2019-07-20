@@ -1,14 +1,4 @@
-body{
-    background-color: #726cac;
-}
-*{
-    margin: 0px;
-    box-sizing: border-box;
-    /* padding: 0px; */
-}
-
-.flat-box{
-    width: 800px;
-    background-color: white;
-    margin: 0px auto;
+body {
+    background-color: rgb(17, 17, 22);
+    font-family: 'Prompt', sans-serif;
 }
