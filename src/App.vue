@@ -36,6 +36,17 @@
         {{ selectedIndex }}
       </div>
     </div>
+    <div class="row">
+      <div class="col-auto mx-auto">
+        <button @click="random()">สุ่มโลดด</button>
+      </div>
+    </div>
+    <!-- random result -->
+    <div class="row">
+      <div class="col-auto mx-auto">
+        <h3>{{ randomResult.text }}</h3>
+      </div>
+    </div>
     <!-- footer box -->
     <div class="row text-center my-4">
       <div class="col">
@@ -54,15 +65,18 @@ export default {
       list: [],
       newList: '',
       selectedIndex: null,
+      randomResult: {},
     }
   },
   methods: {
     addNewList() {
-      this.list.push(
-        {
-          text: this.newList,   
-        }
-      );
+      if (this.newList.trim() !== '') {
+        this.list.push(
+          {
+            text: this.newList,   
+          }
+        );
+      }
       this.newList = '';
     },
 
@@ -77,6 +91,15 @@ export default {
 
     unSelected() {
       this.selectedIndex = null;
+    },
+
+    random() {
+      if (this.list.length < 2) {
+        this.randomResult = null;
+      } else {
+        const randomIndex = Math.floor(Math.random() * this.list.length);
+        this.randomResult = this.list[randomIndex];
+      }
     }
   },
 
