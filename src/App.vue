@@ -3,7 +3,7 @@
     <!-- header box -->
     <div class="row sticky-top py-3 align-items-end" style="z-index: 9999;">
       <div class="col-auto mx-auto">
-        <h1 class="display-5"><a href="/">สุ่มสิจ๊ะ</a></h1>
+        <h1 class="display-5"><a href="/">สุ่มสี่สุ่มห้า</a></h1>
       </div>
     </div>
     <!-- nav bar -->
@@ -25,30 +25,20 @@
     <!-- random list box -->
     <div class="row">
       <div class="col">
-        <!-- list -->
-        <!-- <div v-for="(item, i) in list" :key="i" class="list bg-danger">
-          <div class="list-content" v-if="i === selectedIndex">
-            <input type="text" class="form-control"
+
+        <div v-for="(item, i) in list" :key="i" class="alert alert-dismissible fade show list" @dblclick="selectedList(i)">
+          <div v-if="i === selectedIndex">
+            <input 
               v-model="item.text" 
-              v-focus
+              class="list-input"
               @blur="unSelected()"
-              @keypress.enter="unSelected()"
+              v-focus
+              v-autowidth="{maxWidth: '60vw', minWidth: '20px', comfortZone: 0}"
             >
           </div>
-          <div  class="list-content" v-else>
-            <div @click="selectedList(i)">
-              {{ item.text }}
-            </div>
-            <button @click="deleteList(i)" class="btn-close">&times;</button>
+          <div v-else>
+            {{ item.text }}
           </div>
-        </div> -->
-
-        <div v-for="(item, i) in list" :key="i" class="alert alert-dark alert-dismissible fade show list">
-          <input 
-            v-model="item.text" 
-            class="list-input"
-            v-autowidth="{maxWidth: '60vw', minWidth: '20px', comfortZone: 0}"
-          >
           <button type="button" class="close" @click="deleteList(i)">
             <span aria-hidden="true">&times;</span>
           </button>

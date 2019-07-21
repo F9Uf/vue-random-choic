@@ -20,6 +20,8 @@ body.morning {
     /* border-radius: 8px; */
     /* min-width: 200px; */
     width: auto;
+    border-color: grey;
+    cursor: pointer;
 }
 
 button.close {
@@ -28,8 +30,9 @@ button.close {
 
 .list-input {
     background-color: transparent;
-    border: none;
     outline: none;
+    /* border-bottom: 1px rgb(128, 128, 128) solid; */
+    border: none;
     /* min-width: 50px !important;
     max-width: 400px !important; */
 }
