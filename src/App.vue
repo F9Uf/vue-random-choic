@@ -79,7 +79,7 @@ export default {
   name: 'app',
   data () {
     return {
-      list: [{text:'1'},{text:'2'},{text:'4'},{text: '6'}],
+      list: [],
       newList: '',
       selectedIndex: null,
       randomResult: {},
