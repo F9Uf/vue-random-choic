@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col">
 
-        <div v-for="(item, i) in list" :key="i" class="alert alert-dismissible fade show list" @dblclick="selectedList(i)">
+        <div v-for="(item, i) in list" :key="i" class="alert border-dark alert-dismissible fade show list" @dblclick="selectedList(i)">
           <div v-if="i === selectedIndex">
             <input 
               v-model="item.text" 
@@ -55,7 +55,7 @@
     </div>
     <div class="row">
       <div class="col-auto mx-auto">
-        <button @click="random()">สุ่มโลดด</button>
+        <button @click="random()" class="btn btn-outline-dark my-3">สุ่มโลดด</button>
       </div>
     </div>
     <!-- random result -->
