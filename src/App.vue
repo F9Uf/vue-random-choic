@@ -81,7 +81,7 @@ export default {
   },
   data () {
     return {
-      list: [{id: 1,text: '1'}, {id: 2,text: 'slkdfjlskdjfksjf'}, {id:3,text:'11'},{id:4,text:'2222'},{id:5,text:'22'}],
+      list: [],
       newList: '',
       selectedIndex: null,
       randomResult: {},
