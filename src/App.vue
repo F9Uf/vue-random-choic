@@ -85,7 +85,7 @@ export default {
       newList: '',
       selectedIndex: null,
       randomResult: {},
-      bodyMode: localStorage.getItem('mode'),
+      bodyMode: document.body.className,
     }
   },
   methods: {
