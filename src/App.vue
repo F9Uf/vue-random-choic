@@ -17,8 +17,8 @@
     <div class="row justify-content-center">
       <div class="col">
         <center>
-        <div v-for="(item, i) in list" :key="i" class="alert alert-dismissible fade show list" @dblclick="selectedList(i)">
-          <div v-if="i === selectedIndex">
+        <div v-for="(item, i) in list" :key="i" class="alert alert-dismissible fade show list" @dblclick="selectedList(item.id)">
+          <div v-if="item.id === selectedIndex">
             <input 
               v-model="item.text" 
               class="list-input"
@@ -102,14 +102,15 @@ export default {
       this.list = this.list.filter(e => e.id !== id);
     },
 
-    selectedList(index) {
-      this.selectedIndex = index;
+    selectedList(id) {
+      this.selectedIndex = id;
     },
 
     unSelected() {
-      if (this.list[this.selectedIndex].text === '') {
-        this.deleteList(this.selectedList);
-      }      
+      const element = this.list.find(e => e.id===this.selectedIndex);
+      if (element && element.text === '') {
+        this.deleteList(this.selectedIndex);
+      }
       this.selectedIndex = null;
     },
 
