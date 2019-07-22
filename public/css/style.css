@@ -12,6 +12,19 @@ body.morning {
     color: rgb(17, 17, 22);
     transition: .3s all;
 }
+
+.header h1 a {
+  text-decoration: none;
+}
+
+.morning .header h1 a{
+  color: #4f4f7a;
+}
+
+.night .header h1 a {
+  color: white;
+}
+
 .morning .header {
   background-color: #ffd5be;
   transition: .3s all;
