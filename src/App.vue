@@ -1,25 +1,16 @@
 <template>
   <div id="app" class="container">
     <!-- header box -->
-    <div class="row sticky-top py-3 align-items-end" style="z-index: 9999;">
+    <span class="toggle-text">Toggle Here! </span>
+    <div class="row sticky-top py-5 align-items-end">
       <div class="col-auto mx-auto">
-        <h1 class="display-5"><a href="/">สุ่มสี่สุ่มห้า</a></h1>
-      </div>
-    </div>
-    <!-- nav bar -->
-    <div class="row fixed-top py-4 ">
-      <div class="col-auto py-2 ml-auto mr-5">
-        <div class="custom-control custom-switch">
-          <input type="checkbox"
-            class="custom-control-input" 
-            id="toggle" 
-            v-model="isDarkMode"
-            true-value="night"
-            false-value="morning"
-            @change="toggleTheme($event)"
-          >
-          <label for="toggle" class="custom-control-label"></label>
-        </div>
+        <h1 class="display-5">
+          <transition name="fadeUp">
+            <sun v-if="bodyMode === 'morning'" @click.native="toggleTheme()"></sun>
+            <moon v-if="bodyMode === 'night'" @click.native="toggleTheme()"></moon>
+          </transition>
+          <a href="/">สุ่มสี่สุ่มห้า</a>
+        </h1>
       </div>
     </div>
     <!-- random list box -->
@@ -74,16 +65,21 @@
 </template>
 
 <script>
+import Sun from './Sun'
+import Moon from './Moon'
 
 export default {
   name: 'app',
+  components: {
+    Sun, Moon
+  },
   data () {
     return {
       list: [],
       newList: '',
       selectedIndex: null,
       randomResult: {},
-      isDarkMode: document.body.className,
+      bodyMode: document.body.className,
     }
   },
   methods: {
@@ -113,16 +109,16 @@ export default {
 
     random() {
       if (this.list.length < 2) {
-        this.randomResult = null;
+        this.randomResult = {};
       } else {
         const randomIndex = Math.floor(Math.random() * this.list.length);
         this.randomResult = this.list[randomIndex];
       }
     },
 
-    toggleTheme(e) {
-      document.body.className = e.target.checked ? 'night': 'morning';
-      this.isDarkMode = e.target.checked ? 'night': 'morning';
+    toggleTheme() {
+      document.body.className = document.body.className === 'morning' ? 'night': 'morning';
+      this.bodyMode = document.body.className;
     }
   },
 
