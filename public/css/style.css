@@ -134,3 +134,24 @@ button.btn-close {
         transform: scale3d(1, 1, 1);
       }
 }
+
+.morning .btn-random {
+  border: 1px solid #4f4f7a;
+  color: #4f4f7a;
+}
+
+.morning .btn-random:hover {
+  background-color: #4f4f7a;
+  color: white;
+  transition: all .3s;
+}
+
+.night .btn-random {
+  border: 1px solid #e74c3c;
+  color: #ff8a5c;
+}
+
+.night .btn-random:hover {
+  background-color: #e74c3c;
+  color: white
+}

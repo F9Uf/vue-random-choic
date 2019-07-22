@@ -49,7 +49,7 @@
     
     <div class="row">
       <div class="col-auto mx-auto">
-        <button @click="random()" class="btn btn-outline-dark my-3">สุ่มโลดด</button>
+        <button @click="random()" class="btn btn-random my-3">สุ่มโลดด</button>
       </div>
     </div>
     <!-- random result -->
