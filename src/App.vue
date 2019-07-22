@@ -73,6 +73,9 @@ import Moon from './Moon'
 
 export default {
   name: 'app',
+  beforeCreate() {
+    document.body.className = localStorage.getItem('mode') || 'morning';
+  },
   components: {
     Sun, Moon
   },
@@ -82,7 +85,7 @@ export default {
       newList: '',
       selectedIndex: null,
       randomResult: {},
-      bodyMode: document.body.className,
+      bodyMode: localStorage.getItem('mode'),
     }
   },
   methods: {
@@ -126,6 +129,7 @@ export default {
     toggleTheme() {
       document.body.className = document.body.className === 'morning' ? 'night': 'morning';
       this.bodyMode = document.body.className;
+      localStorage.setItem('mode', document.body.className);
     },
 
   },
