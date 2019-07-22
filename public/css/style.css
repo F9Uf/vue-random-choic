@@ -12,28 +12,69 @@ body.morning {
     color: rgb(17, 17, 22);
     transition: .3s all;
 }
+.morning .header {
+  background-color: #ffd5be;
+  transition: .3s all;
+}
+
+.night .header {
+  background-color: #4f4f7a;
+  transition: .2s all;
+}
 
 .list {
-    margin: 10px;
-    display: inline-block;
-    /* padding: 10px; */
-    /* border-radius: 8px; */
-    /* min-width: 200px; */
-    width: auto;
-    cursor: pointer;
+  margin: 10px;
+  display: inline-block;
+  word-wrap: break-word;
+  width: auto;
+  max-width: calc(60vw + 80px);
+  cursor: pointer;
+  min-height: 50px;
+}
+.morning .list {
+  border: 1px solid #ff8a5c;
+  box-shadow: 3px 3px 6px 0px #e74d3c81;
 }
 
-button.close {
+.night .list {
+  border: 1px solid rgb(189, 189, 189);
+  box-shadow: 3px 3px 6px 0px rgba(175, 175, 175, 0.336);
+}
+
+button.btn-close {
     outline: none;
-}
-
-.list-input {
+    position: absolute;
+    top: 7px;
+    right: 3px;
     background-color: transparent;
-    outline: none;
-    /* border-bottom: 1px rgb(128, 128, 128) solid; */
+    border-radius: 50%;
     border: none;
-    /* min-width: 50px !important;
-    max-width: 400px !important; */
+    padding: .25rem .75rem;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.morning button.btn-close:hover {
+  background-color: #e74c3c;
+  color: #fff;
+  transition: all .3s;
+}
+
+.night button.btn-close:hover {
+  background-color: #9191b4;
+  color: #fff;
+  transition: all .5s;
+}
+.list-input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.morning .list-input {
+  color: rgb(255, 183, 107)
+}
+.night .list-input {
+  color: #9191b4;
 }
 
 .toggle-text {
@@ -41,4 +82,42 @@ button.close {
     position: fixed;
     top: 30px;
     right: calc(50% - 160px);
+    z-index: 9998;
+}
+
+.tada2 {
+    animation: tada2 2s infinite;
+}
+
+@keyframes tada2 {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+    
+      10%,
+      20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+      }
+    
+      30%,
+      50%,
+      70%,
+      90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      }
+    
+      40%,
+      60%,
+      80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      }
+    
+      to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
 }

@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="container">
     <!-- header box -->
-    <span class="toggle-text">Toggle Here! </span>
-    <div class="row sticky-top py-5 align-items-end">
+    <span class="toggle-text tada2">Toggle Here! </span>
+    <div class="row sticky-top pt-5 pb-3 align-items-end header">
       <div class="col-auto mx-auto">
         <h1 class="display-5">
           <transition name="fadeUp">
@@ -14,15 +14,16 @@
       </div>
     </div>
     <!-- random list box -->
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col">
-
-        <div v-for="(item, i) in list" :key="i" class="alert border-dark alert-dismissible fade show list" @dblclick="selectedList(i)">
+        <center>
+        <div v-for="(item, i) in list" :key="i" class="alert alert-dismissible fade show list" @dblclick="selectedList(i)">
           <div v-if="i === selectedIndex">
             <input 
               v-model="item.text" 
               class="list-input"
               @blur="unSelected()"
+              @keypress.enter="unSelected()"
               v-focus
               v-autowidth="{maxWidth: '60vw', minWidth: '20px', comfortZone: 0}"
             >
@@ -30,10 +31,11 @@
           <div v-else>
             {{ item.text }}
           </div>
-          <button type="button" class="close" @click="deleteList(i)">
+          <button type="button" class="btn-close" @click="deleteList(item.id)">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        </center>
       </div>
     </div>
     <!-- input box -->
@@ -44,6 +46,7 @@
         </form>
       </div>
     </div>
+    
     <div class="row">
       <div class="col-auto mx-auto">
         <button @click="random()" class="btn btn-outline-dark my-3">สุ่มโลดด</button>
@@ -75,7 +78,7 @@ export default {
   },
   data () {
     return {
-      list: [],
+      list: [{id: 1,text: '1'}, {id: 2,text: 'slkdfjlskdjfksjf'}, {id:3,text:'11'},{id:4,text:'2222'},{id:5,text:'22'}],
       newList: '',
       selectedIndex: null,
       randomResult: {},
@@ -87,6 +90,7 @@ export default {
       if (this.newList.trim() !== '') {
         this.list.push(
           {
+            id: this.list.length + 1,
             text: this.newList,   
           }
         );
@@ -94,9 +98,8 @@ export default {
       this.newList = '';
     },
 
-    deleteList(index) {
-      this.selectedIndex = null;
-      this.list.splice(index,1);
+    deleteList(id) {
+      this.list = this.list.filter(e => e.id !== id);
     },
 
     selectedList(index) {
@@ -104,6 +107,9 @@ export default {
     },
 
     unSelected() {
+      if (this.list[this.selectedIndex].text === '') {
+        this.deleteList(this.selectedList);
+      }      
       this.selectedIndex = null;
     },
 
@@ -119,7 +125,8 @@ export default {
     toggleTheme() {
       document.body.className = document.body.className === 'morning' ? 'night': 'morning';
       this.bodyMode = document.body.className;
-    }
+    },
+
   },
 
   directives: {
